@@ -72,6 +72,29 @@
 
 ## 4.2 基本型態包裹器 ##
 
+### 4.2.1 包裹器基本型態 ###
+
+* 使用基本型態目的在於效率；更多時候，使用類別建立實例，因為可以攜帶更多資訊。
+
+### 4.2.2 自動裝箱、拆箱 ###
+
+* J2SE 5.0 以前，須使用 Integer, Long, Double, Float, Boolean 等類別包裹為物件。
+  * var wrapper1 = new Integer(10); // 從 Java SE 9 開始，基本型態包裹器的建構式都標示為棄用 (deprecated) 了
+  * var wrapper1 = Integer.valueOf(data1);
+* J2SE 5.0 以後，提供自動裝箱 (Auto boxing) 功能來包裹基本型態
+  * Integer data1 = 10;
+* Number number = 3.14f;
+  * 3.14f 會先被自動裝箱為 Float，然後指定給 number。
+* J2SE 5.0 以後，也可以自動拆箱 (Auto unboxing)
+
+### 4.2.3 自動裝箱、拆箱內幕 ###
+
+* 自動裝箱與拆箱的功能是編譯器蜜糖 (Compiler sugar)，實際上會使用 Integer.valueOf() 來建立 Integer 實例。
+* 如果傳入的 int 在 IntegerCache.low (預設為 -128) 與 IntegerCache.high (預設為 127) 之間，則直接傳回，否則就使用 new 建構新的 Integer 實例。
+* IntegerCache.high 可以於啟動 JVM 時，使用系統屬性來指定
+  * 將 IntegerCache.high 更改為 300
+    * java -D java.lang.Integer.IntegerCache.high=300 AutoBoxing
+
 ## 4.3 陣列物件 ##
 
 ## 4.4 字串物件 ##
