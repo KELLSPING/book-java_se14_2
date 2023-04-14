@@ -97,6 +97,48 @@
 
 ## 4.3 陣列物件 ##
 
+* 陣列在 Java 中，就是物件
+
+### 4.3.1 陣列物件 ###
+
+* 宣告陣列
+  * Java
+    * int[] scores = {};
+    * int scores[] = {}; // 也可以，但不建議
+  * C/C++
+    * int scores[] = {};
+
+* Java 的陣列是物件，可以使用 length 術性取得陣列長度
+  * Java
+    * int len = scores.length;
+  * C/C++
+    * size_t len = sizeof(arr) / sizeof(arr[0]);
+
+### 4.3.2 操作陣列物件 ###
+
+* 陣列元素初始值
+  * byte, short, int: 0
+  * long: 0L
+  * float: 0.0F
+  * double: 0.0D
+  * char: \u0000
+  * boolean: false
+  * class: null
+
+* 使用 java.util.Arrays 的 fill() 方法，設定陣列的元素值。
+  * Arrays.fill(arr, 10);
+
+* 建立陣列物件的類別定義，是由 JVM 動態產生。
+
+* 實際上，Java 的多維陣列，是由一維陣列實現，
+
+* int[][] arr = new int \[2][];
+  * arr 參考的物件會有兩個索引，但參考至 null。
+
+### 4.3.3 陣列複製 ###
+
+* 使用 JDK6 以上，可以使用 Arrays.copyOf() 方法，不用另行建立新陣列，它會幫忙建立。
+
 ## 4.4 字串物件 ##
 
 ## 4.5 查詢 Java API 文件 ##
