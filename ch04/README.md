@@ -147,6 +147,45 @@
 
 ## 4.4 字串物件 ##
 
+* 在 Java 中，字串代表一組字元，是 java.lang.String 類別的實例
+
+### 4.4.1 字串基礎 ###
+
+* 使用 length() 取得字串物件管理的 char 數量
+* 使用 charAt() 指定取得字串中的某個 char
+* toUpperCase()
+* 陣列與字串轉換
+  * 將 char[] 陣列，透過 new 來建構 String 實例
+    * String name = new String(char_arr);
+  * 使用 String 的 toCharArray() 方法，將字串以 char[] 陣列回傳
+    * char[] ch = str1.toCharArray();
+* 將字串剖析為基本型態
+  * Byte.parseByte(str_number)
+  * Integer.parseShort(str_number)
+  * Float.parseFloat(str_number)
+  * ...
+* 命令列引數 (Command line arguments)
+
+### 4.4.2 字串特性 ###
+
+* Java 字串須注意的特性
+  * 字串常量與字串持
+  * 不可變動 (Immutable) 字串
+
+* 字串常量 (String literal) 與字串池 (String pool)
+  * 以 "" 包括住的字串，只要內容(序列、大小寫相同)，JVM 只會建立一個 String 實例，並在字串池中維護。
+  * 以 "" 寫下的字串稱為字串常量，代表是固定的字串內容。
+
+* 不可變動字串
+  * 在 Java 中，字串一旦建立，就無法更動任何內容。
+  * 使用 + 串接字串，會變成建立 java.lang.StringBuilder 實例。
+
+* StringBuilder 與 StringBuffer
+  * java.lang.StringBuilder
+    * 是 JDK5 開始新增的類別，在單機非多執行緒 (Multithread) 情況下，使用 StringBuilder 會有較好的效率，因為 StringBuilder 不處理同步問題
+  * java.lang.StringBuffer
+    * 會處理同步問題，在多執行緒環境下建議使用 StringBuffer，讓物件自行管理同步問題
+
 ## 4.5 查詢 Java API 文件 ##
 
 ## 4.6 重點複習 ##
