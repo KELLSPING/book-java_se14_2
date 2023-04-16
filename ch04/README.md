@@ -186,6 +186,28 @@
   * java.lang.StringBuffer
     * 會處理同步問題，在多執行緒環境下建議使用 StringBuffer，讓物件自行管理同步問題
 
+### 4.4.3 原始碼檔案 ###
+
+* 正體中文 Windows
+  * Windows 10 Build 1903 更新以前，預設的純文字編譯器會使用 MS950 (相容於 Big5) 編碼。
+  * Windows 10 Build 1903 更新以後，預設的純文字編譯器會使用 UTF-8 編碼。
+
+* 使用指定的編碼器
+  * javac -encoding UTF-8 Main.java
+
+* 產生的 .class 檔案，使用反組譯工具還原程式碼
+
+### 4.4.4 Java 與 Unicode ###
+
+* Unicode 與 UTF
+  * 字元集是一組符號的集合，字元編碼是字元實際儲存時的位元組格式。
+  * 碼點 (code point)
+  * 碼元 (code unit)
+  * UTF-8, UTF-16
+
+* char 與 String
+  * JVM 在執行時期，對於 \uxxxx 採用的實作是 UTF-16 Big Endian，也就是記憶體中會使用兩個位元組，也就是一個碼元來儲存。
+
 ## 4.5 查詢 Java API 文件 ##
 
 ## 4.6 重點複習 ##
