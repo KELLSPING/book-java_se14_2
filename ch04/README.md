@@ -97,7 +97,116 @@
 
 ## 4.3 陣列物件 ##
 
+* 陣列在 Java 中，就是物件
+
+### 4.3.1 陣列物件 ###
+
+* 宣告陣列
+  * Java
+    * int[] scores = {};
+    * int scores[] = {}; // 也可以，但不建議
+  * C/C++
+    * int scores[] = {};
+
+* Java 的陣列是物件，可以使用 length 術性取得陣列長度
+  * Java
+    * int len = scores.length;
+  * C/C++
+    * size_t len = sizeof(arr) / sizeof(arr[0]);
+
+### 4.3.2 操作陣列物件 ###
+
+* 陣列元素初始值
+  * byte, short, int: 0
+  * long: 0L
+  * float: 0.0F
+  * double: 0.0D
+  * char: \u0000
+  * boolean: false
+  * class: null
+
+* 使用 java.util.Arrays 的 fill() 方法，設定陣列的元素值。
+  * Arrays.fill(arr, 10);
+
+* 建立陣列物件的類別定義，是由 JVM 動態產生。
+
+* 實際上，Java 的多維陣列，是由一維陣列實現，
+
+* int[][] arr = new int \[2][];
+  * arr 參考的物件會有兩個索引，但參考至 null。
+
+### 4.3.3 陣列複製 ###
+
+* 使用 JDK6 以上，可以使用 Arrays.copyOf() 方法，不用另行建立新陣列，它會幫忙建立。
+* Java 的陣列一旦建立，長度就固定了。
+* 淺層複製 (Shallow copy)
+  * System.arraycopy() 和 Arrays.copyOf() 用在類別型態宣告的陣列時，都是淺層複製。
+  * 術語上來說，這叫做複製參考，並沒有複製整個物件。
+* 深層複製 (Deep copy)
+  * A 各索引參考的物件會被複製，分別指定給 B 各索引位置。
+
 ## 4.4 字串物件 ##
+
+* 在 Java 中，字串代表一組字元，是 java.lang.String 類別的實例
+
+### 4.4.1 字串基礎 ###
+
+* 使用 length() 取得字串物件管理的 char 數量
+* 使用 charAt() 指定取得字串中的某個 char
+* toUpperCase()
+* 陣列與字串轉換
+  * 將 char[] 陣列，透過 new 來建構 String 實例
+    * String name = new String(char_arr);
+  * 使用 String 的 toCharArray() 方法，將字串以 char[] 陣列回傳
+    * char[] ch = str1.toCharArray();
+* 將字串剖析為基本型態
+  * Byte.parseByte(str_number)
+  * Integer.parseShort(str_number)
+  * Float.parseFloat(str_number)
+  * ...
+* 命令列引數 (Command line arguments)
+
+### 4.4.2 字串特性 ###
+
+* Java 字串須注意的特性
+  * 字串常量與字串持
+  * 不可變動 (Immutable) 字串
+
+* 字串常量 (String literal) 與字串池 (String pool)
+  * 以 "" 包括住的字串，只要內容(序列、大小寫相同)，JVM 只會建立一個 String 實例，並在字串池中維護。
+  * 以 "" 寫下的字串稱為字串常量，代表是固定的字串內容。
+
+* 不可變動字串
+  * 在 Java 中，字串一旦建立，就無法更動任何內容。
+  * 使用 + 串接字串，會變成建立 java.lang.StringBuilder 實例。
+
+* StringBuilder 與 StringBuffer
+  * java.lang.StringBuilder
+    * 是 JDK5 開始新增的類別，在單機非多執行緒 (Multithread) 情況下，使用 StringBuilder 會有較好的效率，因為 StringBuilder 不處理同步問題
+  * java.lang.StringBuffer
+    * 會處理同步問題，在多執行緒環境下建議使用 StringBuffer，讓物件自行管理同步問題
+
+### 4.4.3 原始碼檔案 ###
+
+* 正體中文 Windows
+  * Windows 10 Build 1903 更新以前，預設的純文字編譯器會使用 MS950 (相容於 Big5) 編碼。
+  * Windows 10 Build 1903 更新以後，預設的純文字編譯器會使用 UTF-8 編碼。
+
+* 使用指定的編碼器
+  * javac -encoding UTF-8 Main.java
+
+* 產生的 .class 檔案，使用反組譯工具還原程式碼
+
+### 4.4.4 Java 與 Unicode ###
+
+* Unicode 與 UTF
+  * 字元集是一組符號的集合，字元編碼是字元實際儲存時的位元組格式。
+  * 碼點 (code point)
+  * 碼元 (code unit)
+  * UTF-8, UTF-16
+
+* char 與 String
+  * JVM 在執行時期，對於 \uxxxx 採用的實作是 UTF-16 Big Endian，也就是記憶體中會使用兩個位元組，也就是一個碼元來儲存。
 
 ## 4.5 查詢 Java API 文件 ##
 
