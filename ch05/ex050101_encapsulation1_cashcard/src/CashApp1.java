@@ -13,7 +13,7 @@
  * * java -cp classes CardApp
  */
 
-public class CardApp {
+public class CashApp1 {
     public static void main(String[] args) {
         CashCard1[] cards = {
             new CashCard1("A001", 500, 0),

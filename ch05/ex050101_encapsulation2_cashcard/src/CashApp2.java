@@ -15,7 +15,7 @@ import java.util.Scanner;
  * * java -cp classes CashApp
  */
 
-public class CashApp {
+public class CashApp2 {
     public static void main(String[] args) {
         CashCard2[] cards = {
                 new CashCard2("A001", 500, 0),
